@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import '../controller/app_controller.dart';
 
-class App extends StatelessWidget {
+class App extends GetView<AppController> {
   const App({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: Obx(() => BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: 0, 
+        currentIndex: controller.currentIndex.value, 
         showSelectedLabels: true,
         selectedItemColor: Colors.black,
-        onTap(index) {
-          print(index);
-        },
+        onTap: controller.changePageIndex,
         items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset("assets/svg/icons/home_off.svg"),
-            activeIcon: SvgPicture.asset("assets/svg/icons/home_on.svg"),
-            label: "홈",
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/svg/icons/home_off.svg"),
+              activeIcon: SvgPicture.asset("assets/svg/icons/home_on.svg"),
+              label: "홈",
             ),
             BottomNavigationBarItem(
             icon: SvgPicture.asset("assets/svg/icons/compass_off.svg", width: 22),
@@ -46,6 +46,7 @@ class App extends StatelessWidget {
             ),
         ]
         ),
+      ),
     );
   }
 }
