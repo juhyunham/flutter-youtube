@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:youtube_app/binding/init_binding.dart';
-import 'package:youtube_clone_app/src/app.dart';
+import 'package:youtube_app/src/binding/init_binding.dart';
+import 'package:youtube_app/src/app.dart';
 
 void main() {
   runApp(const myApp());
@@ -23,7 +23,7 @@ class myApp extends StatelessWidget {
       initialBinding: InitBinding(),
       initialRoute: "/",
       getPages: [
-        GetPage(name: "/", page: () => App())
+        GetPage(name: "/", page: () => const App())
       ]
     );
   }
